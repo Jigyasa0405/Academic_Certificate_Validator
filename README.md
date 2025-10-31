@@ -164,44 +164,6 @@ Frontend will start on `http://localhost:5173`
 - Validates against database records
 - Detects forged or invalid QR codes
 
-### 3. API Endpoints
-
-#### Verify Certificate
-```http
-POST /api/verify-certificate
-Content-Type: multipart/form-data
-
-Response:
-{
-  "success": true,
-  "extracted_info": { ... },
-  "validation": { ... },
-  "forgery_detection": { ... }
-}
-```
-
-#### Scan QR Code
-```http
-POST /api/scan-qr
-Content-Type: multipart/form-data
-
-Response:
-{
-  "success": true,
-  "data": { ... }
-}
-```
-
-#### Health Check
-```http
-GET /api/health
-
-Response:
-{
-  "status": "healthy",
-  "message": "Certificate verification API is running"
-}
-```
 
 ---
 
@@ -309,30 +271,6 @@ The system calculates multiple confidence scores:
 
 ---
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Issue**: Forgery detection returns 0% scores
-- **Solution**: Ensure reference images are extracted from actual certificates
-- Run `python debug_forgery_test.py` to diagnose
-- Check ROI coordinates in `config.py`
-
-**Issue**: OCR not extracting text properly
-- **Solution**: Verify Tesseract installation
-- Check image quality and resolution
-- Update OCR patterns in `extract_certificate_info()`
-
-**Issue**: Database connection errors
-- **Solution**: Run `python setup.py` to initialize database
-- Check CSV file path in `app.py`
-
-**Issue**: QR code not detected
-- **Solution**: Ensure QR code is clear and high resolution
-- Test QR format matches expected pattern
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -351,27 +289,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 👥 Authors
-
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
-
----
-
 ## 🙏 Acknowledgments
 
 - Tesseract OCR for text extraction capabilities
 - OpenCV community for computer vision tools
 - Flask and React communities for excellent frameworks
 - All contributors who help improve this project
-
----
-
-## 📧 Contact
-
-For questions or support:
-- **Email**: your.email@example.com
-- **GitHub Issues**: [Create an issue](https://github.com/yourusername/Academic_Validator/issues)
-- **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/yourprofile)
 
 ---
 
